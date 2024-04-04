@@ -1,0 +1,112 @@
+{
+    "contractName": "TicketSale",
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_ticketCount",
+            "type": "uint256"
+          }
+        ],
+        "name": "buyTickets",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_ticketCount",
+            "type": "uint256"
+          }
+        ],
+        "name": "refundTickets",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "buyer",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "ticketCount",
+            "type": "uint256"
+          }
+        ],
+        "name": "TicketPurchased",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "buyer",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "ticketCount",
+            "type": "uint256"
+          }
+        ],
+        "name": "TicketRefunded",
+        "type": "event"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "tickets",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ],
+    "networks": {
+      "1": {
+        "events": {},
+        "links": {},
+        "address": "0x1234567890123456789012345678901234567890", 
+        "transactionHash": "0x1234567890123456789012345678901234567890123456789012345678901234"
+      },
+      "3": {
+        "events": {},
+        "links": {},
+        "address": "0xabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde", 
+        "transactionHash": "0xabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcd"
+      }
+    },
+    "schemaVersion": "3.0.0",
+    "updatedAt": "2024-04-06T00:00:00.000Z"
+  }
+  
