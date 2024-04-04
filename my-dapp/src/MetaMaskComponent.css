@@ -1,0 +1,46 @@
+.metamask-component {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .content {
+    text-align: left;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .account-info {
+    margin-top: 20px;
+  }
+  
+  .account-info h2 {
+    margin-bottom: 10px;
+  }
+  
+  .account-info p {
+    margin: 5px 0;
+  }
+  
