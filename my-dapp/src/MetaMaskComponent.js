@@ -27,7 +27,9 @@ const MetaMaskComponent = () => {
           setUserBalance(web3.utils.fromWei(balance, 'ether'));
   
           // Fetch all transactions using Sepolia Etherscan API
-          const apiUrl = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=desc&apikey=5UST6K91HPMXPUPHG2USKJJ2QDWD9UJQSS`;
+          // const apiUrl = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=desc&apikey=5UST6K91HPMXPUPHG2USKJJ2QDWD9UJQSS`;
+          const apiUrl = [];
+        
           const response = await fetch(apiUrl);
           const data = await response.json();
           console.log("here", data)

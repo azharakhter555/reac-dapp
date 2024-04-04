@@ -6,7 +6,7 @@ import TicketSaleComponent from "./TicketSaleComponent"; // Import the TicketSal
 function App() {
   return (
     <div className="App">
-      <MetaMaskComponent />
+      {/* <MetaMaskComponent /> */}
       <TicketSaleComponent/>
     </div>
   );
