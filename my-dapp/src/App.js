@@ -55,7 +55,7 @@ function App() {
                     <div className="h-100">
                         <h1 className="display-6">About Us</h1>
                         <p className="text-primary fs-5 mb-4">The Most Trusted Cryptocurrency Platform</p>
-                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam asdipsum sit. Aliqu diam amet diam et eos.
                             Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
                         </p>
                         <p className="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
