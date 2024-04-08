@@ -8,13 +8,16 @@ import BigNumber from 'bignumber.js';
 const TicketSaleComponent = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
+  const [transferTo, setTransferTo] = useState(""); // State to hold the recipient address
+  const [transferCount, setTransferCount] = useState(0); // State to hold the number of tickets to transfer
   const [contract, setContract] = useState(null);
-  const [contractBalance, setContractBalance] = useState(null);
+  const [contractBalance, setContractBalance] = useState(0);
   const [contractAddress, setContractAddress] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [ticketsOwned, setTicketsOwned] = useState(0);
-  const [ticketCount, setTicketCount] = useState(1);
+  const [ticketCount, setTicketCount] = useState(0);
   const [web3, setWeb3] = useState(null);
+
 
   useEffect(() => {
     async function loadMetaMaskData() {
@@ -38,7 +41,7 @@ const TicketSaleComponent = () => {
                 const contract = new web3.eth.Contract(TicketMarketABI, contractAddress);
                 setContract(contract);
 
-                // Get ticket info using the fetched defaultAccount
+              
                 const ticketInfo = await contract.methods.getTicketInfo(address).call();
                 const userTickets = ticketInfo[1]; // Access the second element of the tuple
               setTicketsOwned(Number(userTickets));
@@ -97,7 +100,26 @@ async function refundTickets() {
   } else {
     setErrorMessage("web3 is not initialized");
   }
-}
+  }
+  
+async function transferTicketsFunction() {
+    if (web3 && contract) { 
+      try {
+        // Call the smart contract function to transfer tickets
+        await contract.methods.transferTickets(transferTo, transferCount).send({ from: defaultAccount });
+        // Update the user's ticket count after transfer
+        const tickets = await fetchTicketsOwned(defaultAccount, contract);
+        setTicketsOwned(tickets);
+        // Clear input fields after successful transfer
+        setTransferTo("");
+        setTransferCount(0);
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
+    } else {
+      setErrorMessage("web3 is not initialized");
+    }
+  }
 
 
 return (
@@ -134,6 +156,33 @@ return (
             <p><strong>Contract Address:</strong> {contractAddress}</p>
             <p><strong>Contract Balance:</strong> {web3.utils.fromWei(contractBalance, 'ether')} ETH</p>
           </div>
+
+          <div className="transfer-section">
+          <p>Tickets Owned: {ticketsOwned}</p>
+  <h2>Transfer Tickets</h2>
+  <div className="transfer-card">
+    <input 
+      type="text" 
+      placeholder="Recipient Address"
+      value={transferTo} 
+      onChange={(e) => setTransferTo(e.target.value)} 
+    />
+    <input 
+      type="number" 
+      placeholder="Number of Tickets" 
+      value={transferCount} 
+      onChange={(e) => setTransferCount(e.target.value)} 
+    />
+    <Button 
+      variant="contained" 
+      color="primary" 
+      onClick={transferTicketsFunction}
+    >
+      Transfer Tickets
+    </Button>
+  </div>
+</div>
+          
         </>
       )}
     </div>
